@@ -3,25 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg-color: #37353a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Estilos para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilos para la barra de desplazamiento cuando se desplaza */
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff30; /* Color de fondo de la barra de desplazamiento */
+  border-radius: 4px; /* Radio de borde de la barra de desplazamiento */
+}
+
+/* Estilos para la barra de desplazamiento en estado inactivo */
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Color de fondo del área de la barra de desplazamiento */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--bg-color);
+  color-scheme: dark;
 }
