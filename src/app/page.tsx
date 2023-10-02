@@ -1,9 +1,16 @@
 "use client"
 
+import Button from "@/components/Button"
 import Image from "next/image"
+import Menu from "@/components/Menu"
+import Subtitle from "@/components/Subtitle"
 import Title from "@/components/Title"
 import logo from "@/assets/images/logo.jpg"
+import { useAuthStore } from "@/store/auth"
+
 const Home = () => {
+  const { user } = useAuthStore()
+
   return (
     <main className="flex flex-col items-center gap-8 py-16 px-6">
       <Image
@@ -15,7 +22,16 @@ const Home = () => {
           borderRadius: "100%",
         }}
       />
-      <Title>Bienvenido</Title>
+      <div className="flex flex-col gap-2">
+        <Title>{`¡Hola, ${user.name.split(" ")[0]}!`}</Title>
+        <Subtitle>
+          En este menú podrás seleccionar la opcion de lo que desees gestionar
+        </Subtitle>
+      </div>
+      <Menu />
+      <Button type="button" style="fixed bottom-6">
+        Cerrar sesión
+      </Button>
     </main>
   )
 }
