@@ -71,3 +71,45 @@ export const POST = async (req: Request) => {
     }
   )
 }
+
+export const DELETE = async (req: Request) => {
+  try {
+    await connectDB()
+    const url = new URL(req.url)
+    const token = url.searchParams.get("token")
+
+    const tokenToDelete = await Token.findOneAndDelete({ value: token })
+
+    if (!tokenToDelete) {
+      return NextResponse.json(
+        {
+          message: "Token no encontrado",
+          ok: false,
+        },
+        {
+          status: 404,
+        }
+      )
+    }
+    return NextResponse.json(
+      {
+        message: "Cierre de sesión exitoso",
+        ok: true,
+      },
+      {
+        status: 200,
+      }
+    )
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Ocurrió un error al cerrar sesión",
+        ok: false,
+      },
+      {
+        status: 400,
+        statusText: "Bad Request",
+      }
+    )
+  }
+}

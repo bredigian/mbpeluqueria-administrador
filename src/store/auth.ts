@@ -48,4 +48,19 @@ export const useAuthStore = create((set: any) => ({
       throw new Error("Ocurrió un error al iniciar sesión")
     }
   },
+
+  signOut: async (token: string) => {
+    try {
+      const response = await axios.delete(`${URL_API}/auth`, {
+        params: { token },
+      })
+      if (response.status === 200) {
+        Cookies.remove("token")
+        set({ user: null })
+        set({ token: null })
+      }
+    } catch (error) {
+      throw new Error("Ocurrío un error al cerrar sesión")
+    }
+  },
 }))
