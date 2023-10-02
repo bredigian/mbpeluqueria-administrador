@@ -5,7 +5,7 @@ import MenuItem from "./MenuItem"
 const Menu = () => {
   return (
     <div className="flex flex-col gap-4 items-center w-full">
-      <MenuItem>
+      <MenuItem href="/shifts">
         <BsCalendarDate className="w-8 h-8 text-yellow-regular" />
         <span className="text-yellow-regular text-lg font-medium">Turnos</span>
       </MenuItem>

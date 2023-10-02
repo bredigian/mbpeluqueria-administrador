@@ -39,7 +39,6 @@ export const useAuthStore = create((set: any) => ({
         },
       })
       if (response.status === 201) {
-        console.log("éxito")
         const { user, token } = response.data
         Cookies.set("token", token)
         set({ user, token })
