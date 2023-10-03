@@ -7,7 +7,7 @@ import { InputType } from "@/types/input.types"
 import { toast } from "sonner"
 import { useAuthStore } from "@/store/auth"
 import { useForm } from "react-hook-form"
-import { useRouter } from "next/navigation"
+import { useRouter } from "next-nprogress-bar"
 
 const Form = () => {
   const {

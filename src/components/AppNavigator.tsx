@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 
 import Cookies from "js-cookie"
+import ProviderProgressBar from "./ProviderProgressBar"
 import ScreenLoader from "./ScreenLoader"
 import SignIn from "./SignIn"
 import { useAuthStore } from "@/store/auth"
@@ -24,7 +25,15 @@ const AppNavigator = ({ children }: { children: React.ReactNode }) => {
   }, [])
   if (loading) return <ScreenLoader />
 
-  return <>{!token ? <SignIn /> : children}</>
+  return (
+    <>
+      {!token ? (
+        <SignIn />
+      ) : (
+        <ProviderProgressBar>{children}</ProviderProgressBar>
+      )}
+    </>
+  )
 }
 
 export default AppNavigator
