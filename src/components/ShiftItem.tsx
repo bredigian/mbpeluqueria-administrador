@@ -5,15 +5,13 @@ const ShiftItem = ({
   data,
   isActive,
   handleActive,
+  handleModal,
 }: {
   data: Summary
   isActive: boolean
   handleActive: () => void
+  handleModal: () => void
 }) => {
-  const handleCancel = () => {
-    console.log("Cancelado")
-  }
-
   const isLongName = data.user.name.length > 16
 
   return (
@@ -50,7 +48,7 @@ const ShiftItem = ({
         </a>
       </div>
       <Button
-        onClick={handleCancel}
+        onClick={handleModal}
         style={`bg-dark-regular text-xs ${
           !isActive ? "invisible opacity-0" : "visible opacity-100"
         } duration-200 ease-in-out`}

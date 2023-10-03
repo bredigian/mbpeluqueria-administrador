@@ -16,6 +16,10 @@ const ShiftSchema: Schema<Summary> = new Schema(
     hour: {
       type: HourSchema,
     },
+    _id: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

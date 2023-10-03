@@ -11,4 +11,5 @@ export interface Summary {
   user: Client
   day: Date
   hour: Hour
+  _id: string
 }
