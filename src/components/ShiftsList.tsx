@@ -103,6 +103,7 @@ const ShiftsList = () => {
         <ChevronLeftIcon
           width={40}
           color="#FFFFFF50"
+          className="cursor-pointer"
           onClick={() => {
             setCurrentDay(
               new Date(currentDay.setDate(currentDay.getDate() - 1))
@@ -117,6 +118,7 @@ const ShiftsList = () => {
         <ChevronRightIcon
           width={40}
           color="#FFFFFF50"
+          className="cursor-pointer"
           onClick={() => {
             setCurrentDay(
               new Date(currentDay.setDate(currentDay.getDate() + 1))

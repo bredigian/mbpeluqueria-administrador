@@ -29,7 +29,7 @@ const Home = () => {
   }
 
   return (
-    <main>
+    <main className="flex flex-col items-center">
       <div className="flex flex-col items-center gap-8 py-16 px-6">
         <Image
           width={160}

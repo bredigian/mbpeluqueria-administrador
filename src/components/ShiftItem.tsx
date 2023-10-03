@@ -30,7 +30,9 @@ const ShiftItem = ({
     <div
       onClick={!isPast ? handleActive : undefined}
       className={`${
-        !isPast ? "bg-dark-bold" : "bg-dark-light"
+        !isPast
+          ? "bg-dark-bold cursor-pointer"
+          : "bg-dark-light cursor-not-allowed"
       } flex flex-col items-center gap-4 w-full py-8 px-10 rounded-[33px] duration-200 ease-in-out ${
         !isActive ? "h-[90px]" : "h-[180px]"
       } overflow-hidden`}
