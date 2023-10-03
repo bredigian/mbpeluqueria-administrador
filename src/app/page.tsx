@@ -22,7 +22,16 @@ const Home = () => {
 
   const onSignOut = async () => {
     try {
-      await signOut(token)
+      toast.promise(
+        async () => {
+          await signOut(token)
+        },
+        {
+          loading: "Cerrando sesión...",
+          success: "Sesión cerrada correctamente",
+          error: "Ha ocurrido un error al cerrar sesión",
+        }
+      )
     } catch (error) {
       toast.error(error as string)
     }
