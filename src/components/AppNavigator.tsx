@@ -14,8 +14,12 @@ const AppNavigator = ({ children }: { children: React.ReactNode }) => {
 
   const verify = async () => {
     const token = Cookies.get("token")
-    if (token) {
-      await verifySession(token)
+    try {
+      if (token) {
+        await verifySession(token)
+      }
+    } catch (error) {
+      console.log(error)
     }
     setLoading(false)
   }

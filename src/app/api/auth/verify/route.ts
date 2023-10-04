@@ -8,11 +8,24 @@ export const POST = async (req: Request) => {
   await connectDB()
   const token = await req.json()
 
-  const tokenDB: TokenType | null = await Token.findOne({ value: token })
-
-  const isValid = validateToken(token)
-
-  if (!isValid) {
+  try {
+    const tokenDB: TokenType | null = await Token.findOne({ value: token })
+    if (tokenDB) {
+      const isValid = await validateToken(tokenDB?.value)
+      if (isValid) {
+        return NextResponse.json(
+          {
+            message: "Token válido",
+            isValid: true,
+            user: tokenDB?.user,
+          },
+          {
+            status: 200,
+            statusText: "OK",
+          }
+        )
+      }
+    }
     return NextResponse.json(
       {
         message: "Token inválido",
@@ -23,17 +36,16 @@ export const POST = async (req: Request) => {
         statusText: "Unauthorized",
       }
     )
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Token inválido y/o inexistente",
+        isValid: false,
+      },
+      {
+        status: 404,
+        statusText: "Token Not Found",
+      }
+    )
   }
-
-  return NextResponse.json(
-    {
-      message: "Token válido",
-      isValid: true,
-      user: tokenDB?.user,
-    },
-    {
-      status: 200,
-      statusText: "OK",
-    }
-  )
 }

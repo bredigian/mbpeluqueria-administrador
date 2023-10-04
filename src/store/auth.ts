@@ -26,7 +26,6 @@ export const useAuthStore = create((set: any) => ({
         Cookies.remove("token")
       }
     } catch (error) {
-      console.log(error)
       throw new Error("Ocurrió un error al verificar la sesión")
     }
   },

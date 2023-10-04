@@ -50,7 +50,7 @@ const Home = () => {
           }}
         />
         <div className="flex flex-col gap-2 ml-2">
-          <Title>{`¡Hola, ${user.name.split(" ")[0]}!`}</Title>
+          <Title>{`¡Hola, ${user?.name?.split(" ")[0]}!`}</Title>
           <Subtitle>
             En este menú podrás seleccionar la opcion de lo que desees gestionar
           </Subtitle>
