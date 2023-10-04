@@ -31,8 +31,16 @@ const ShiftsList = () => {
 
   const handleCancel = async () => {
     try {
-      await cancelShift(activeShift?._id as string)
-      toast.success("Turno cancelado con éxito")
+      toast.promise(
+        async () => {
+          await cancelShift(activeShift?._id as string)
+        },
+        {
+          loading: "Cancelando turno...",
+          success: "Turno cancelado con éxito",
+          error: "Hubo un error al cancelar el turno",
+        }
+      )
       handleModal()
     } catch (error) {
       toast.error(error as string)

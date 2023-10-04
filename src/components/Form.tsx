@@ -4,10 +4,11 @@ import Button from "./Button"
 import { FormValues } from "@/types/form.types"
 import Input from "./Input"
 import { InputType } from "@/types/input.types"
+import { Pulsar } from "@uiball/loaders"
 import { toast } from "sonner"
 import { useAuthStore } from "@/store/auth"
 import { useForm } from "react-hook-form"
-import { useRouter } from "next-nprogress-bar"
+import { useState } from "react"
 
 const Form = () => {
   const {
@@ -16,10 +17,12 @@ const Form = () => {
     formState: { errors },
   } = useForm<FormValues>()
 
-  const { push } = useRouter()
   const { signIn } = useAuthStore()
 
+  const [logging, setLogging] = useState(false)
+
   const onSubmit = async (data: FormValues) => {
+    setLogging(true)
     try {
       await signIn(data)
       toast.success("Sesión iniciada correctamente")
@@ -27,6 +30,7 @@ const Form = () => {
       console.log(error)
       toast.error("Usuario y/o contraseña incorrectos")
     }
+    setLogging(false)
   }
 
   return (
@@ -60,9 +64,15 @@ const Form = () => {
       >
         Contraseña
       </Input>
-      <Button style="self-center mt-8" type="submit">
-        Iniciar Sesión
-      </Button>
+      {!logging ? (
+        <Button style="self-center mt-8" type="submit">
+          Iniciar Sesión
+        </Button>
+      ) : (
+        <div className="grid place-items-center self-center mt-8">
+          <Pulsar size={52} color="#D2BF9D" />
+        </div>
+      )}
     </form>
   )
 }
