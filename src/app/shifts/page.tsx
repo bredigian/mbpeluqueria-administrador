@@ -1,12 +1,11 @@
-import ButtonBack from "@/components/ButtonBack"
+import Screen from "@/components/Screen"
 import ShiftsList from "@/components/ShiftsList"
 
 const Shifts = () => {
   return (
-    <main className="flex flex-col gap-8 py-10 px-8">
-      <ButtonBack />
+    <Screen>
       <ShiftsList />
-    </main>
+    </Screen>
   )
 }
 
