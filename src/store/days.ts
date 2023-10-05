@@ -54,4 +54,30 @@ export const useDaysStore = create((set: any, get: any) => ({
       )
     }
   },
+
+  addHour: async (hour: string, minutes: string) => {
+    try {
+      const isHourAlreadyAdded = get().hours.find(
+        (h: WorkHour) => h.value === `${hour}:${minutes}`
+      )
+      if (isHourAlreadyAdded) {
+        throw new Error("La hora ya fue agregada")
+      }
+
+      const response = await axios.post(
+        `${URL_API}/hours`,
+        { hour, minutes },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      if (response.status === 200) {
+        get().getHours()
+      }
+    } catch (error) {
+      throw new Error("Ocurrió un error al agregar la hora")
+    }
+  },
 }))
