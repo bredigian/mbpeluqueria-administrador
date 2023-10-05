@@ -25,7 +25,16 @@ export const useDaysStore = create((set: any, get: any) => ({
       const response = await axios.get(`${URL_API}/hours`)
       if (response.status === 200) {
         const { hours } = response.data
-        set({ hours })
+        const sortedHours = hours.sort((a: WorkHour, b: WorkHour) => {
+          const [hourA, minutesA] = a.value.split(":")
+          const [hourB, minutesB] = b.value.split(":")
+          if (hourA < hourB) return -1
+          if (hourA > hourB) return 1
+          if (minutesA < minutesB) return -1
+          if (minutesA > minutesB) return 1
+          return 0
+        })
+        set({ hours: sortedHours })
       }
     } catch (error) {
       throw new Error("Ocurrío un error al obtener las horas de trabajo")
