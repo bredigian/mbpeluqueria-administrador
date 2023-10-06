@@ -5,4 +5,5 @@ export interface Hour {
 
 export interface WorkHour {
   value: string
+  __v: number
 }
