@@ -77,9 +77,10 @@ const ShiftItem = ({
       <div className="flex items-center justify-between w-full mt-4">
         <Button
           onClick={handleModal}
-          style={`bg-dark-regular text-[#ffffff60] text-xs ${
+          style={`bg-dark-regular text-xs ${
             !isActive ? "invisible opacity-0" : "visible opacity-100"
           } duration-200 ease-in-out`}
+          textColor="text-white-semi-light"
           type="button"
         >
           Cancelar
@@ -93,6 +94,7 @@ const ShiftItem = ({
               !isActive ? "invisible opacity-0" : "visible opacity-100"
             } duration-200 ease-in-out`}
             type="button"
+            textColor="text-dark-bold"
           >
             <BsWhatsapp className="text-base" />
             Recordar
