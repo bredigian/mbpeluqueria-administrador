@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} max-w-sm mx-auto`}>
         <AppNavigator>{children}</AppNavigator>
-        <Toaster />
+        <Toaster theme="dark" />
       </body>
     </html>
   )

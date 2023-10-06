@@ -74,7 +74,7 @@ const Home = () => {
       </div>
       {showModal && (
         <Modal>
-          <div className="bg-dark-regular flex flex-col items-center gap-4 p-8 w-[300px] rounded-[55px]">
+          <div className="bg-dark-bold flex flex-col items-center gap-4 p-8 w-[300px] rounded-[55px]">
             <Title style="text-[#ffffff70]">¿Estás seguro?</Title>
             <Button onClick={onSignOut} type="button" style="w-[140px] mt-2">
               Cerrar sesión

@@ -22,7 +22,7 @@ const HourSelector = ({
           onClick={onHandleHourDown}
           className="text-white-semi-light text-xl cursor-pointer"
         />
-        <span className="w-28 text-center py-4 text-6xl font-medium bg-dark-bold text-yellow-regular rounded-xl">
+        <span className="w-28 text-center py-4 text-6xl font-medium bg-dark-regular text-yellow-regular rounded-xl">
           {hour}
         </span>
         <BiSolidDownArrow
@@ -36,7 +36,7 @@ const HourSelector = ({
           onClick={onHandleMinutesDown}
           className="text-white-semi-light text-xl cursor-pointer"
         />
-        <span className="w-28 text-center py-4 text-6xl font-medium bg-dark-bold text-yellow-regular rounded-xl">
+        <span className="w-28 text-center py-4 text-6xl font-medium bg-dark-regular text-yellow-regular rounded-xl">
           {minutes}
         </span>
         <BiSolidDownArrow

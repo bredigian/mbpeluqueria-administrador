@@ -155,7 +155,7 @@ const ShiftsList = () => {
       </motion.div>
       {showModal && (
         <Modal>
-          <div className="bg-dark-regular flex flex-col items-center gap-4 p-8 w-[300px] rounded-[55px]">
+          <div className="bg-black flex flex-col items-center gap-4 p-8 w-[300px] rounded-[55px]">
             <Title>¿Estás seguro?</Title>
             <Button onClick={handleCancel} type="button" style="w-[140px] mt-2">
               Cancelar

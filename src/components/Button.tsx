@@ -25,7 +25,7 @@ const Button = ({
       type={type}
       className={`${style} hover:cursor-pointer ${
         textColor ?? "text-yellow-regular"
-      } bg-dark-bold px-4 py-3 text-sm font-bold rounded-full`}
+      } bg-dark-regular px-4 py-3 text-sm font-bold rounded-full`}
     >
       {children}
     </motion.button>

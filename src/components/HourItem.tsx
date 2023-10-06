@@ -21,7 +21,7 @@ const HourItem = ({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, delay: delay }}
       className={`${
-        !enabled ? "bg-dark-bold-transparent" : "bg-dark-bold"
+        !enabled ? "bg-dark-transparent" : "bg-dark-regular"
       } flex items-center justify-between px-10 py-4 w-full rounded-full`}
     >
       <span

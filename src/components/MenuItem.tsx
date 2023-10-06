@@ -10,7 +10,7 @@ const MenuItem = ({
   return (
     <Link
       href={href}
-      className="flex items-center justify-between px-20 bg-dark-bold w-full py-4 rounded-full"
+      className="flex items-center justify-between px-20 bg-dark-regular w-full py-4 rounded-full"
     >
       {children}
     </Link>
