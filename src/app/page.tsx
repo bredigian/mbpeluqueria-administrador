@@ -7,6 +7,7 @@ import Modal from "@/components/Modal"
 import Subtitle from "@/components/Subtitle"
 import Title from "@/components/Title"
 import logo from "@/assets/images/logo.jpg"
+import { motion } from "framer-motion"
 import { toast } from "sonner"
 import { useAuthStore } from "@/store/auth"
 import { useState } from "react"
@@ -38,7 +39,13 @@ const Home = () => {
   }
 
   return (
-    <main className="flex flex-col items-center">
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center"
+    >
       <div className="flex flex-col items-center gap-8 py-16 px-6">
         <Image
           width={160}
@@ -56,7 +63,12 @@ const Home = () => {
           </Subtitle>
         </div>
         <Menu />
-        <Button onClick={handleModal} type="button" style="fixed bottom-6">
+        <Button
+          delay={0.5}
+          onClick={handleModal}
+          type="button"
+          style="fixed bottom-6"
+        >
           Cerrar sesión
         </Button>
       </div>
@@ -73,7 +85,7 @@ const Home = () => {
           </div>
         </Modal>
       )}
-    </main>
+    </motion.main>
   )
 }
 

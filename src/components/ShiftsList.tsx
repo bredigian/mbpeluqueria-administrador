@@ -6,17 +6,16 @@ import { useEffect, useState } from "react"
 import Button from "./Button"
 import Modal from "./Modal"
 import { Month } from "@/types/enums.types"
-import { Pulsar } from "@uiball/loaders"
 import ShiftItem from "./ShiftItem"
 import Subtitle from "./Subtitle"
 import { Summary } from "@/types/summary.types"
 import Title from "./Title"
+import { motion } from "framer-motion"
 import { toast } from "sonner"
 import { useShiftsStore } from "@/store/shifts"
 
 const ShiftsList = () => {
   const [currentDay, setCurrentDay] = useState(new Date())
-  const [loading, setLoading] = useState(false)
   const [filteredShifts, setFilteredShifts] = useState<Summary[]>([])
 
   const { cancelShift } = useShiftsStore()
@@ -80,13 +79,11 @@ const ShiftsList = () => {
   }
 
   const fetchShifts = async () => {
-    setLoading(true)
     try {
       await getShifts()
     } catch (error) {
       toast.error(error as string)
     }
-    setLoading(false)
   }
 
   useEffect(() => {
@@ -97,16 +94,14 @@ const ShiftsList = () => {
     filterShifts()
   }, [shifts, currentDay])
 
-  if (loading) {
-    return (
-      <div className="grid place-items-center w-full h-44">
-        <Pulsar size={52} color="#D2BF9D" />
-      </div>
-    )
-  }
-
   return (
-    <div className="flex flex-col items-center w-full gap-8">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center w-full gap-8"
+    >
       <div className="flex items-center justify-between w-full">
         <ChevronLeftIcon
           width={40}
@@ -117,9 +112,7 @@ const ShiftsList = () => {
               new Date(currentDay.setDate(currentDay.getDate() - 1))
             )
           }}
-        >
-          Prev
-        </ChevronLeftIcon>
+        ></ChevronLeftIcon>
         <Title>
           {currentDay.getDate()} de {Month[currentDay.getMonth()]}
         </Title>
@@ -132,18 +125,24 @@ const ShiftsList = () => {
               new Date(currentDay.setDate(currentDay.getDate() + 1))
             )
           }}
-        >
-          Next
-        </ChevronRightIcon>
+        ></ChevronRightIcon>
       </div>
-      <div className="flex flex-col items-center w-full gap-6">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="flex flex-col items-center w-full gap-6"
+      >
         {filteredShifts?.length === 0 ? (
           <Subtitle>No hay turnos reservados</Subtitle>
         ) : (
           filteredShifts?.map((shift: Summary) => {
             const isActive = activeShift?.hour.hour === shift.hour.hour
+            const delay = filteredShifts?.indexOf(shift) * 0.25
             return (
               <ShiftItem
+                delay={delay}
                 key={shift.hour.hour}
                 data={shift}
                 isActive={isActive}
@@ -153,7 +152,7 @@ const ShiftsList = () => {
             )
           })
         )}
-      </div>
+      </motion.div>
       {showModal && (
         <Modal>
           <div className="bg-dark-regular flex flex-col items-center gap-4 p-8 w-[300px] rounded-[55px]">
@@ -167,7 +166,7 @@ const ShiftsList = () => {
           </div>
         </Modal>
       )}
-    </div>
+    </motion.div>
   )
 }
 

@@ -1,16 +1,19 @@
 import Button from "./Button"
 import { Summary } from "@/types/summary.types"
+import { motion } from "framer-motion"
 
 const ShiftItem = ({
   data,
   isActive,
   handleActive,
   handleModal,
+  delay,
 }: {
   data: Summary
   isActive: boolean
   handleActive: () => void
   handleModal: () => void
+  delay: number
 }) => {
   const isLongName = data.user.name.length > 16
 
@@ -27,7 +30,10 @@ const ShiftItem = ({
     ).getTime()
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, delay: delay }}
       onClick={!isPast ? handleActive : undefined}
       className={`${
         !isPast
@@ -76,7 +82,7 @@ const ShiftItem = ({
       >
         Cancelar
       </Button>
-    </div>
+    </motion.div>
   )
 }
 

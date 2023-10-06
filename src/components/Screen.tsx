@@ -1,4 +1,7 @@
+"use client"
+
 import ButtonBack from "./ButtonBack"
+import { motion } from "framer-motion"
 
 const Screen = ({
   children,
@@ -8,10 +11,16 @@ const Screen = ({
   style?: string
 }) => {
   return (
-    <main className={`flex flex-col gap-8 py-10 px-8 ${style}`}>
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className={`flex flex-col gap-8 py-10 px-8 ${style}`}
+    >
       <ButtonBack />
       {children}
-    </main>
+    </motion.main>
   )
 }
 

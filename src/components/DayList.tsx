@@ -22,7 +22,14 @@ const DayList = () => {
   return (
     <div className="flex flex-col items-center gap-4">
       {days?.map((item) => {
-        return <DayItem key={item._id} data={item} />
+        const delay = days.indexOf(item) * 0.05
+        return (
+          <DayItem
+            delay={days.indexOf(item) === 0 ? 0 : delay}
+            key={item._id}
+            data={item}
+          />
+        )
       })}
     </div>
   )

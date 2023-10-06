@@ -80,10 +80,12 @@ const Day = ({ params }: { params: { day: string } }) => {
     <Screen>
       {hours?.map((hour) => {
         const isEnabled = day?.hours.find((item) => item.value === hour.value)
+        const delay = hours.indexOf(hour) * 0.05
         return (
           <HourItem
             key={hour.value}
             data={hour}
+            delay={hours.indexOf(hour) === 0 ? 0 : delay}
             enabled={!isEnabled ? false : true}
             enable={() => onHandlerHour(hour, day?._id as string, true)}
             disable={() => onHandlerHour(hour, day?._id as string, false)}

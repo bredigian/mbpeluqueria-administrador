@@ -1,18 +1,25 @@
 import { WorkHour } from "@/types/hour.types"
+import { motion } from "framer-motion"
 
 const HourItem = ({
   data,
   enabled,
   enable,
   disable,
+  delay,
 }: {
   data: WorkHour
   enabled: boolean
   enable: () => void
   disable: () => void
+  delay: number
 }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, delay: delay }}
       className={`${
         !enabled ? "bg-dark-bold-transparent" : "bg-dark-bold"
       } flex items-center justify-between px-10 py-4 w-full rounded-full`}
@@ -32,7 +39,7 @@ const HourItem = ({
       >
         {!enabled ? "Activar" : "Desactivar"}
       </span>
-    </div>
+    </motion.div>
   )
 }
 
