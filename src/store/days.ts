@@ -13,7 +13,10 @@ export const useDaysStore = create((set: any, get: any) => ({
       const response = await axios.get(`${URL_API}/days`)
       if (response.status === 200) {
         const { days } = response.data
-        set({ days })
+        const sortedDays = days.sort((a: Day, b: Day) => {
+          return a.weekday < b.weekday ? -1 : a.weekday > b.weekday ? 1 : 0
+        })
+        set({ days: sortedDays })
       }
     } catch (error) {
       throw new Error("Ocurrío un error al obtener los días")

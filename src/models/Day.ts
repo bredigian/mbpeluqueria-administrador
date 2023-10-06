@@ -16,6 +16,10 @@ const DaySchema = new Schema<Day>({
     type: [WorkHourSchema],
     required: true,
   },
+  weekday: {
+    type: Number,
+    required: true,
+  },
 })
 
 export default models.Day || model<Day>("Day", DaySchema, "days")

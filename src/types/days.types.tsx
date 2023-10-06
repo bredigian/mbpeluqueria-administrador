@@ -5,4 +5,5 @@ export interface Day {
   value: string
   path: string
   hours: WorkHour[]
+  weekday: number
 }
