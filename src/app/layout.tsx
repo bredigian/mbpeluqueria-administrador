@@ -10,6 +10,16 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Administrador de MB Peluqueria",
   description: "Administración del sitio web de turnos de MB Peluqueria.",
+  keywords:
+    "peluquería, peluquero, pelo, cortar, cortes, cortes de pelo, masculino, niños, barba, barberia, barbero",
+  authors: [
+    {
+      name: "Gianluca Bredice Developer",
+      url: "https://devbredicegian.site",
+    },
+  ],
+  robots: "index",
+  applicationName: "Administrador de MB Peluquería",
 }
 
 export default function RootLayout({
