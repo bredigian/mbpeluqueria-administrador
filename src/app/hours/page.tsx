@@ -23,7 +23,7 @@ const Hours = () => {
         </Subtitle>
         <TbClockPlus
           onClick={onHandleAdd}
-          className="text-yellow-regular text-2xl absolute right-0 top-[2px]"
+          className="text-yellow-regular text-2xl absolute right-0 top-[2px] cursor-pointer"
         />
       </div>
       <DayList />
