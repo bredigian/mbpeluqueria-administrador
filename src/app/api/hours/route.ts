@@ -46,3 +46,32 @@ export const POST = async (req: Request) => {
     )
   }
 }
+
+export const DELETE = async (req: Request) => {
+  await connectDB()
+  try {
+    const data = await req.json()
+    const hourDeleted = await WorkHour.findByIdAndDelete(data._id)
+
+    return NextResponse.json(
+      {
+        message: "Hora eliminada correctamente",
+        ok: true,
+        hourDeleted,
+      },
+      {
+        status: 200,
+      }
+    )
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: "Ocurrió un error al eliminar la hora",
+        ok: false,
+      },
+      {
+        status: 400,
+      }
+    )
+  }
+}

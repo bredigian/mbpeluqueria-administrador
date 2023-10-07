@@ -7,12 +7,16 @@ const HourItem = ({
   enable,
   disable,
   delay,
+  isForDelete,
+  deleteHour,
 }: {
   data: WorkHour
-  enabled: boolean
-  enable: () => void
-  disable: () => void
-  delay: number
+  enabled?: boolean
+  enable?: () => void
+  disable?: () => void
+  delay?: number
+  isForDelete?: boolean
+  deleteHour?: () => void
 }) => {
   return (
     <motion.div
@@ -21,24 +25,33 @@ const HourItem = ({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, delay: delay }}
       className={`${
-        !enabled ? "bg-dark-transparent" : "bg-dark-regular"
+        !enabled && !isForDelete ? "bg-dark-transparent" : "bg-dark-regular"
       } flex items-center justify-between px-10 py-4 w-full rounded-full`}
     >
       <span
         className={`${
-          !enabled ? "text-yellow-light" : "text-yellow-regular"
+          !enabled && !isForDelete ? "text-yellow-light" : "text-yellow-regular"
         } text-lg font-medium`}
       >
         {data?.value}
       </span>
-      <span
-        onClick={!enabled ? enable : disable}
-        className={`${
-          !enabled ? "text-white-semi-light" : "text-white-regular"
-        } text-sm hover:underline cursor-pointer`}
-      >
-        {!enabled ? "Activar" : "Desactivar"}
-      </span>
+      {!isForDelete ? (
+        <span
+          onClick={!enabled ? enable : disable}
+          className={`${
+            !enabled ? "text-white-semi-light" : "text-white-regular"
+          } text-sm hover:underline cursor-pointer`}
+        >
+          {!enabled ? "Activar" : "Desactivar"}
+        </span>
+      ) : (
+        <span
+          onClick={deleteHour}
+          className="text-white-semi-light text-sm hover:underline cursor-pointer"
+        >
+          Eliminar
+        </span>
+      )}
     </motion.div>
   )
 }

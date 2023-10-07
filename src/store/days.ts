@@ -92,4 +92,20 @@ export const useDaysStore = create((set: any, get: any) => ({
       throw new Error("Ocurrió un error al agregar la hora")
     }
   },
+
+  deleteHour: async (hour: WorkHour) => {
+    try {
+      const response = await axios.delete(`${URL_API}/hours/`, {
+        data: hour,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      if (response.status === 200) {
+        get().getHours()
+      }
+    } catch (error) {
+      throw new Error("Ocurrió un error al eliminar la hora")
+    }
+  },
 }))
