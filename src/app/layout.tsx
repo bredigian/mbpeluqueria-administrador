@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   ],
   robots: "index",
   applicationName: "Administrador de MB Peluquería",
+  manifest: "/manifest.json",
+  icons: {
+    apple: "/icon512_rounded.png",
+    icon: "/icon512_maskable.png",
+  },
+  themeColor: "#000000",
 }
 
 export default function RootLayout({
