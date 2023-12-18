@@ -1,4 +1,4 @@
-import { BsCalendarDate, BsClock } from "react-icons/bs"
+import { BsCalendarDate, BsClock, BsMegaphone } from "react-icons/bs"
 
 import MenuItem from "./MenuItem"
 
@@ -14,6 +14,10 @@ const Menu = () => {
         <span className="text-yellow-regular text-lg font-medium">
           Horarios
         </span>
+      </MenuItem>
+      <MenuItem href="/notices">
+        <BsMegaphone className="w-8 h-8 text-yellow-regular" />
+        <span className="text-yellow-regular text-lg font-medium">Avisos</span>
       </MenuItem>
     </div>
   )
