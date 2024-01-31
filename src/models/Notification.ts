@@ -20,6 +20,10 @@ const NotificationSchema = new Schema<Notification>(
       type: Boolean,
       default: false,
     },
+    type: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

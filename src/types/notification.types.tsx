@@ -4,4 +4,5 @@ export interface Notification {
   time: string
   user: string
   readed?: boolean
+  type: "reserve" | "cancel"
 }

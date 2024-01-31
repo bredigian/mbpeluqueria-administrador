@@ -34,26 +34,24 @@ const Notifications = () => {
   }
 
   return (
-    <>
-      <Screen>
-        <section className="flex items-center justify-between w-full">
-          <Title>Notificaciones</Title>
-          {notifications?.length > 0 && (
-            <Button type="button" style="text-xs" onClick={handleModal}>
-              Limpiar todo
-            </Button>
-          )}
-        </section>
-        {notifications?.length > 0 ? (
-          <section className="flex flex-col gap-6 w-full">
-            {notifications?.map((notification) => {
-              return <Notification key={notification._id} data={notification} />
-            })}
-          </section>
-        ) : (
-          <Subtitle>No se han encontrado notificaciones</Subtitle>
+    <Screen style="relative">
+      <section className="flex items-center justify-between w-full">
+        <Title>Notificaciones</Title>
+        {notifications?.length > 0 && (
+          <Button type="button" style="text-xs" onClick={handleModal}>
+            Limpiar todo
+          </Button>
         )}
-      </Screen>
+      </section>
+      {notifications?.length > 0 ? (
+        <section className="flex flex-col gap-6 w-full">
+          {notifications?.map((notification) => {
+            return <Notification key={notification._id} data={notification} />
+          })}
+        </section>
+      ) : (
+        <Subtitle>No se han encontrado notificaciones</Subtitle>
+      )}
       {showModal && (
         <Modal>
           <div className="bg-dark-bold flex flex-col items-center gap-4 p-8 w-[300px] rounded-[55px]">
@@ -67,7 +65,7 @@ const Notifications = () => {
           </div>
         </Modal>
       )}
-    </>
+    </Screen>
   )
 }
 

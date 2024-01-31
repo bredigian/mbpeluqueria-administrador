@@ -29,8 +29,19 @@ const ProviderProgressBar = ({ children }: { children: React.ReactNode }) => {
     socket.on("new-shift", async (data: Notification) => {
       await fetchNotifications()
       if (Notification.permission === "granted") {
-        new Notification("¡Turno asignado 💈!", {
+        new Notification("¡Turno asignado ✅💈!", {
           body: `${data?.user} ha reservado un turno para el día ${data?.day} a las ${data?.time}.`,
+          icon: "/favicon.ico",
+          badge: "/favicon.ico",
+        })
+      }
+    })
+
+    socket.on("cancel-shift", async (data: Notification) => {
+      await fetchNotifications()
+      if (Notification.permission === "granted") {
+        new Notification("¡Turno cancelado ✖️💈!", {
+          body: `${data?.user} ha cancelado un turno para el día ${data?.day} a las ${data?.time}.`,
           icon: "/favicon.ico",
           badge: "/favicon.ico",
         })

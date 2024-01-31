@@ -26,8 +26,10 @@ const Notification = ({ data }: { data: Notification }) => {
       }`}
     >
       <p className="text-yellow-regular text-sm">
-        <strong>{data?.user}</strong> ha reservado un turno para el día{" "}
-        <strong>{data?.day}</strong> a las <strong>{data?.time}</strong>.
+        <strong>{data?.user}</strong>{" "}
+        {data?.type === "reserve" ? "ha reservado" : "ha cancelado"} un turno
+        para el día <strong>{data?.day}</strong> a las{" "}
+        <strong>{data?.time}</strong>.
       </p>
       <Button
         onClick={!data?.readed ? handleRead : undefined}
