@@ -2,6 +2,8 @@
 
 import Button from "@/components/Button"
 import Image from "next/image"
+import { IoNotificationsOutline } from "react-icons/io5"
+import Link from "next/link"
 import Menu from "@/components/Menu"
 import Modal from "@/components/Modal"
 import Subtitle from "@/components/Subtitle"
@@ -10,10 +12,13 @@ import logo from "@/assets/images/logo.jpg"
 import { motion } from "framer-motion"
 import { toast } from "sonner"
 import { useAuthStore } from "@/store/auth"
+import { useNotificationsStore } from "@/store/notifications"
 import { useState } from "react"
 
 const Home = () => {
   const { user, token, signOut } = useAuthStore()
+
+  const { unreaded } = useNotificationsStore()
 
   const [showModal, setShowModal] = useState(false)
 
@@ -85,6 +90,14 @@ const Home = () => {
           </div>
         </Modal>
       )}
+      <Link className="absolute top-10 right-10" href={"notifications"}>
+        {unreaded > 0 && (
+          <span className="absolute grid place-items-center text-black text-sm bg-yellow-regular w-5 h-5 rounded-full translate-x-6 -translate-y-3">
+            {unreaded}
+          </span>
+        )}
+        <IoNotificationsOutline className="text-yellow-regular text-3xl" />
+      </Link>
     </motion.main>
   )
 }
