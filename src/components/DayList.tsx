@@ -20,7 +20,7 @@ const DayList = () => {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-6">
       {days?.map((item) => {
         const delay = days.indexOf(item) * 0.05
         return (

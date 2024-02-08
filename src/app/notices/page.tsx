@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { IoMdAddCircleOutline } from "react-icons/io"
+import Button from "@/components/Button"
 import Notice from "@/components/Notice"
 import { Pulsar } from "@uiball/loaders"
 import Screen from "@/components/Screen"
@@ -35,10 +35,13 @@ const Notices = () => {
     <Screen>
       <section className="flex items-center justify-between w-full">
         <Title>Avisos</Title>
-        <IoMdAddCircleOutline
+        <Button
+          type="button"
+          style="text-xs"
           onClick={() => push("/notices/add")}
-          className="text-yellow-regular text-2xl cursor-pointer"
-        />
+        >
+          Agregar
+        </Button>
       </section>
       <Subtitle>
         Acá podrás crear y eliminar los avisos que desees comunicar.
