@@ -2,6 +2,7 @@ import { useNotices } from "@/store/notices"
 import { Notice } from "@/types/notice.types"
 import { RiDeleteBin7Line } from "react-icons/ri"
 import { toast } from "sonner"
+import Button from "./Button"
 
 const Notice = ({ data }: { data: Notice }) => {
   const { deleteNotice } = useNotices()
@@ -19,9 +20,15 @@ const Notice = ({ data }: { data: Notice }) => {
   }
 
   return (
-    <li className="bg-dark-regular flex items-center justify-between p-3 w-full rounded-xl text-yellow-regular">
-      <p className="text-sm max-w-[230px]">{data.title}</p>
-      <RiDeleteBin7Line onClick={handleDelete} className="w-4 h-4" />
+    <li className="bg-dark-regular flex flex-col items-center gap-4 p-3 w-full rounded-xl text-yellow-regular">
+      <p className="text-sm">{data.title}</p>
+      <Button
+        type="button"
+        style="text-xs bg-yellow-light w-full"
+        onClick={handleDelete}
+      >
+        Eliminar
+      </Button>
     </li>
   )
 }

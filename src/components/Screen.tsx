@@ -16,7 +16,7 @@ const Screen = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className={`flex flex-col gap-8 py-10 px-8 ${style}`}
+      className={`flex flex-col gap-6 py-10 px-8 ${style}`}
     >
       <ButtonBack />
       {children}

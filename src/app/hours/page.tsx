@@ -21,7 +21,7 @@ const Hours = () => {
 
   return (
     <Screen>
-      <div className="flex flex-col gap-2 relative">
+      <div className="flex flex-col gap-6 relative">
         <Title>Horarios</Title>
         <Subtitle>
           Acá podrás seleccionar los horarios que desees para cada día

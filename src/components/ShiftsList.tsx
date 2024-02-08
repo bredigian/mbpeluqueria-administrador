@@ -100,7 +100,7 @@ const ShiftsList = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-col items-center w-full gap-8"
+      className="flex flex-col items-center w-full gap-6"
     >
       <div className="flex items-center justify-between w-full">
         <ChevronLeftIcon
