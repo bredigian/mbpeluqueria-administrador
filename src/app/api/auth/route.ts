@@ -46,7 +46,7 @@ export const POST = async (req: Request) => {
     { username: user.user.username },
     process.env.JWT_SECRET_KEY as string,
     {
-      expiresIn: "1d",
+      expiresIn: "30d",
     }
   )
   const tokenToCreate = new Token({
